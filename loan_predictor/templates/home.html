@@ -1,0 +1,50 @@
+<html>
+    <head><title>Loan Predictor</title></head>
+    <body>
+        <form action="http://localhost:5000/prediction" method="POST" id="predict">
+            <p>Married:
+                <select name="married" id="married">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </p>
+            <p>Number of Dependents:
+                <select name="dependents" id="dependents">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3+</option>
+                </select>
+            </p>
+            <p>Education:
+                <select name="education" id="education">
+                    <option value="1">College Degree</option>
+                    <option value="0">No Degree</option>
+                </select>
+            </p>
+            <p>Employment:
+                <select name="employment" id="employment">
+                    <option value="1">Self Employed</option>
+                    <option value="0">Not Self Employed</option>
+                </select>
+            </p>
+            <p>Applicant Income: <input type="number" name = "a_income"></p>
+            <p>Co-Applicant Income: <input type="number" name = "c_income"></p>
+            <p>Loan Amount: <input type="number" name = "amnt"></p>
+            <p>Loan Term (Months): <input type="number" name = "term"></p>
+            <p>Credit History:
+                <select name="c_history" id="c_history">
+                    <option value="1">Have History</option>
+                    <option value="0">No History</option>
+                </select>
+            </p>
+            <p>Property Area:
+                <select name="p_area" id="p_area">
+                    <option value="1">Urban</option>
+                    <option value="0">Semiurban</option>
+                    <option value="2">Rural</option>
+                </select>
+            </p>
+        </form>
+        <button form="predict">GO</button>
+    </body>
+</html>
