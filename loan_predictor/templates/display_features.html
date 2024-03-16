@@ -1,0 +1,16 @@
+
+<html>
+<head>
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction: {{ pred }}</h1>
+    <h2>SHAP Values</h2>
+    <p>The impact of each feature on the model's decision:</p>
+    <ul>
+        {% for value in shap_values %}
+            <li>{{ loop.index }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
