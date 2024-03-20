@@ -50,6 +50,9 @@ def results():
         
         # Render the template with prediction and SHAP values
         return render_template('prediction.html', pred=pred_str, shap_values=shap_values_single)
+    
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
