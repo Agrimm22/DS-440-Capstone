@@ -1,50 +1,117 @@
 <html>
-    <head><title>Loan Predictor</title></head>
+    <head>
+        <title>Loan Predictor</title>
+        <link rel="stylesheet" type = "text/css" href="home.css">
+    </head>
+    <style>
+        body {
+    background-image: linear-gradient(to bottom right, #00063b, #09125e);
+    margin: 2em 2em 2em 2em;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    text-align: center;
+    font-size: 2.2em;
+    font-family: Optima, sans-serif;
+}
+
+#explain {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#input1 {
+    text-align: left;
+    display: inline-block;
+    width: 45%;
+    margin: auto;
+}
+
+#input2 {
+    text-align: left;
+    width: 45%;
+    display: inline-block;
+    margin: auto;
+}
+
+#input3 {
+    display: inline-block;
+}
+
+select {
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 0.8em;
+}
+
+button {
+    width: 50%;
+    display: block;
+    margin: auto;
+    font-size: 2.5em;
+}
+
+button:hover {
+    font-size: 2.6em;
+    cursor: pointer;
+}
+
+form {
+    font-size: 1.5em;
+}
+
+input {
+    font-size: 0.8em;
+}
+
+#form {
+    display: block;
+    margin: auto;
+    width: 99%;
+    text-align: center;
+}
+
+
+    </style>
     <body>
+        <div id = "header">
+            <h1>Loan Approval Prediction</h1>
+        </div> <!--#header-->
+        <div id = "explain">
+            <p>Our loan approval prediction calculator allows you to assess your chances of getting approved or denied for a loan. For best results, input the following information pertaining to your finances and personal information.</p>
+        </div> <!--explain-->
         <form action="http://localhost:5000/prediction" method="POST" id="predict">
-            <p>Married:
-                <select name="married" id="married">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+        <div id = "form">
+        <div id = 'input1'>
+            <p>Loan Purpose:
+                <select name="purpose" id="purpose">
+                    <option disabled selected value> -- select --</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debt Consolidation">Debt Consolidation</option>
+                    <option value="Education">Education</option>
+                    <option value="Home Improvement">Home Improvement</option>
+                    <option value="Major Purchase">Major Purchase</option>
+                    <option value="Small Business">Small Business</option>
+                    <option value="All Other">Other</option>
                 </select>
-            </p>
-            <p>Number of Dependents:
-                <select name="dependents" id="dependents">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3+</option>
-                </select>
-            </p>
-            <p>Education:
-                <select name="education" id="education">
-                    <option value="1">College Degree</option>
-                    <option value="0">No Degree</option>
-                </select>
-            </p>
-            <p>Employment:
-                <select name="employment" id="employment">
-                    <option value="1">Self Employed</option>
-                    <option value="0">Not Self Employed</option>
-                </select>
-            </p>
-            <p>Applicant Income: <input type="number" name = "a_income"></p>
-            <p>Co-Applicant Income: <input type="number" name = "c_income"></p>
-            <p>Loan Amount: <input type="number" name = "amnt"></p>
-            <p>Loan Term (Months): <input type="number" name = "term"></p>
-            <p>Credit History:
-                <select name="c_history" id="c_history">
-                    <option value="1">Have History</option>
-                    <option value="0">No History</option>
-                </select>
-            </p>
-            <p>Property Area:
-                <select name="p_area" id="p_area">
-                    <option value="1">Urban</option>
-                    <option value="0">Semiurban</option>
-                    <option value="2">Rural</option>
-                </select>
-            </p>
+        </div> <!--input1-->
+        <div id = "input2">
+            <p>Annual Income ($): <input type="number" name = "annual_income"></p>
+            <p>Monthly Debt ($): <input type="number" name = "monthly_debt_payments"></p>
+            <p>Loan Amount ($): <input type="number" name = "amnt"></p>
+            <p>FICO Score: <input type="number" name = "fico"></p>
+            <p>Days with Credit: <input type="number" name = "days_with_credit"></p>
+            <p>No. Credit Inqueries: <input type="number" name = "inq_last_6mths"></p>
+            <p>No. Derogatory Public Records: <input type="number" name = "public_records"></p>
+        </div> <!--input2-->
+        </div> <!--form-->
         </form>
-        <button form="predict">GO</button>
+        <button form="predict">View your prediction</button>
     </body>
 </html>
