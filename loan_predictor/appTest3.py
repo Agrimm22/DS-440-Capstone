@@ -3,8 +3,8 @@ import pickle
 from xgboost import XGBClassifier
 import numpy as np
 import shap
-from utils import inputs_fetch
-from utils import intrest_prediction
+#from utils import inputs_fetch
+#from utils import intrest_prediction
 
 
 
@@ -23,16 +23,15 @@ def show_home():
 def results():
     if request.method == 'POST':
         # Extracting form data
-        married = int(request.form['married'])
-        dependents = int(request.form['dependents'])
-        education = int(request.form['education'])
-        employment = int(request.form['employment'])
-        a_income = float(request.form['a_income']) / 10
-        c_income = float(request.form['c_income']) / 10
-        amnt = float(request.form['amnt']) / 1000
-        term = float(request.form['term'])
-        c_history = int(request.form['c_history'])
-        p_area = int(request.form['p_area'])
+        purpose = int(request.form['purpose'])
+        annual_income = float(request.form['annual_income'])
+        amnt = float(request.form['amnt'])
+        term = int(request.form['term'])
+        monthly_debt_payments = float(request.form['monthly_debt_payments'])
+        fico = int(request.form['fico'])
+        days_with_credit = int(request.form['days_with_credit'])
+        inq_last_6mths = int(request.form['inq_last_6mths'])
+        public_records = int(request.form['public_records'])
 
         '''
         These values below are the updated values, change them in the code above and in the html
@@ -54,7 +53,7 @@ def results():
         # Making a prediction
         pred = model.predict(inputs)
         int_pred = intrest_model(inputs)
-        inputs_fetch(inputs)
+        #inputs_fetch(inputs)
         
 
 
