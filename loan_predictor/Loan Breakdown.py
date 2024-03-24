@@ -1,3 +1,6 @@
+
+
+
 term=float(request.form['term'])
 amnt=float(request.form['amnt'])/1000
 rate= #predict based on new model and data
