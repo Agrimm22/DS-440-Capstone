@@ -59,7 +59,38 @@
         .button:hover {
             background-color: #45a049;
         }
+        
+        /* Add these styles to your existing <style> tag in the head */
+
+        .loan-calculator {
+            margin-top: 40px; /* Separation from the prediction content */
+        }
+
+        .calculator-form, .loan-details {
+            margin-top: 20px;
+        }
+
+        .calculator-form input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px); /* Full width minus padding and border */
+        }
+
+        .loan-details {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .loan-details h3 {
+            color: #333;
+            font-weight: normal;
+        }
+
+        /* You can further style the layout, colors, and fonts as needed */
     </style>
+
 </head>
 <body>
     <div class="content">
@@ -69,5 +100,51 @@
         <h3 class="interest-rate">{{ int_rate }}</h3>
         <button class="button" onclick="window.location.href='/'">Back to Home</button>
     </div>
+    <div class="loan-calculator">
+        <span class="label">Loan Calculator</span>
+        <div class="calculator-form">
+            <input type="number" id="loanAmount" placeholder="Loan amount">
+            <input type="number" id="loanTermYears" placeholder="Loan term in years">
+            <input type="number" id="loanTermMonths" placeholder="Or loan term in months">
+            <input type="number" id="annualInterestRate" placeholder="Interest rate per year">
+            <button class="button" onclick="calculateLoan()">Calculate</button>
+        </div>
+        <div class="loan-details">
+            <span>Monthly payments:</span>
+            <h3 id="monthlyPayments">$0.00</h3>
+            <span>Total principal paid:</span>
+            <h3 id="totalPrincipal">$0.00</h3>
+            <span>Total interest paid:</span>
+            <h3 id="totalInterest">$0.00</h3>
+        </div>
+    </div>
+    
+    <script>
+    // JavaScript function to calculate loan details
+    function calculateLoan() {
+        // Get the values from the input fields
+        var loanAmount = parseFloat(document.getElementById('loanAmount').value);
+        var loanTermYears = parseFloat(document.getElementById('loanTermYears').value);
+        var loanTermMonths = parseFloat(document.getElementById('loanTermMonths').value);
+        var annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+    
+        // Convert input to correct terms if necessary
+        var totalPayments = loanTermYears ? loanTermYears * 12 : loanTermMonths;
+    
+        // Calculate monthly payment
+        var monthlyInterestRate = (annualInterestRate / 100) / 12;
+        var monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+    
+        // Output the results to the loan-details section
+        document.getElementById('monthlyPayments').textContent = monthlyPayment.toFixed(2);
+        document.getElementById('totalPrincipal').textContent = loanAmount.toFixed(2);
+        var totalInterest = monthlyPayment * totalPayments - loanAmount;
+        document.getElementById('totalInterest').textContent = totalInterest.toFixed(2);
+    }
+    
+    // Optional: Add here any additional JavaScript you may need for the page
+    
+    </script>
+    
 </body>
 </html>
