@@ -32,6 +32,7 @@ def results():
         days_with_credit = int(request.form['days_with_credit'])
         inq_last_6mths = int(request.form['inq_last_6mths'])
         public_records = int(request.form['public_records'])
+        loan_term = int(request.form['loan_term'])
 
         '''
         These values below are the updated values, change them in the code above and in the html
