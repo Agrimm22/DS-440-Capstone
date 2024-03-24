@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e7eff6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .content {
+            background-color: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 700px; /* Further increased from 600px */
+            width: 90%; /* It will take 90% of body width, up to 700px */
+            margin: auto; /* Centers the content block horizontally */
+        }
+
+        h3 {
+            color: #333;
+            margin: 20px 0;
+            font-size: 2em; /* Further increased font size */
+            font-weight: bold; /* Added bold for labels */
+        }
+
+        .prediction, .interest-rate {
+            color: #5cb85c;
+            font-weight: bold;
+            font-size: 2.5em; /* Further increased font size for prediction and interest rate */
+        }
+
+        .interest-rate {
+            color: #f0ad4e;
+        }
+
+        .label {
+            display: block; /* Makes the label go full width, better for separation */
+            font-size: 1.5em; /* Adjust font size for labels if needed */
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <span class="label">Prediction:</span>
+        <h3 class="prediction">{{ pred }}</h3>
+        <span class="label">Predicted Interest Rate:</span>
+        <h3 class="interest-rate">{{ int_rate }}</h3>
+        <button class="button" onclick="window.location.href='/'">Back to Home</button>
+    </div>
+</body>
+</html>
