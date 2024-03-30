@@ -34,6 +34,8 @@ def results():
         public_records = int(request.form['public_records'])
         loan_term = int(request.form['loan_term'])
 
+
+        
         '''
         These values below are the updated values, change them in the code above and in the html
         Fields:
