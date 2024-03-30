@@ -151,7 +151,7 @@
             </div>
             <div class="form-group">
                 <label for="annual_income">Annual Income ($):</label>
-                <input type="number" name="annual_income" min="0" id="annual_income">
+                <input type="number" name="annual_income" min="0" id="annual_income" required>
             </div>
             <div class="form-group">
                 <label for="monthly_debt_payments">Monthly Debt ($):
@@ -159,11 +159,11 @@
                         <span class="tooltiptext">This includes payments for your mortgage or rent, car loans, the minimum required payments on credit cards, student loans, and any other financial commitments classified as debts.</span>
                     </div>
                 </label>
-                <input type="number" name="monthly_debt_payments" min="0" id="monthly_debt_payments">
+                <input type="number" name="monthly_debt_payments" min="0" id="monthly_debt_payments" required>
             </div>
             <div class="form-group">
                 <label for="amnt">Loan Amount ($):</label>
-                <input type="number" name="amnt" min="0" id="amnt">
+                <input type="number" name="amnt" min="1000" id="amnt" required>
             </div>
             <div class="form-group">
                 <label for="fico">FICO Score:
@@ -171,7 +171,7 @@
                     <span class="tooltiptext">Please enter a FICO Score value between 300 and 850.</span>
                 </div>
             </label>
-                <input type="number" name="fico" min="300" max="850" id="fico">
+                <input type="number" name="fico" min="300" max="850" id="fico" required>
             </div>
             <div class="form-group">
                 <label for="days_with_credit">Days with Credit:
@@ -179,7 +179,7 @@
                         <span class="tooltiptext">Please enter the number of days you have had a credit line.</span>
                     </div>
                 </label>
-                <input type="number" name="days_with_credit" min="0" id="days_with_credit">
+                <input type="number" name="days_with_credit" min="0" id="days_with_credit" required>
             </div>
             <div class="form-group">
                 <label for="inq_last_6mths">Credit Inquiries Past 6mths:
@@ -187,7 +187,7 @@
                         <span class="tooltiptext">The number of inquiries on your credit in the past 6 months.</span>
                     </div>
                 </label>
-                <input type="number" name="inq_last_6mths" min="0" id="inq_last_6mths">
+                <input type="number" name="inq_last_6mths" min="0" id="inq_last_6mths" required>
             </div>
             <div class="form-group">
                 <label for="public_records">No. Derogatory Public Records:
@@ -195,11 +195,11 @@
                         <span class="tooltiptext">Includes Bankruptcy Filings, Tax Liens, and Judgements.</span>
                     </div>
                 </label>
-                <input type="number" name="public_records" min="0" id="public_records">
+                <input type="number" name="public_records" min="0" id="public_records" required>
             </div>
             <div class="form-group">
                 <label for="loan_term">Loan Term (months):</label>
-                <input type="number" name="loan_term" min="12" id="loan_term">
+                <input type="number" name="loan_term" min="12" id="loan_term" required>
             </div>
             <button type="submit" class="button">View your prediction</button>
         </form>
