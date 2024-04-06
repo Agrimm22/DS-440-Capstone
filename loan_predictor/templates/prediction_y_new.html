@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <title>Prediction</title>
     <style>
@@ -8,143 +8,185 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             text-align: center;
         }
 
-        .content {
+        .header {
+            background: #000; /* Black background */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between; /* Space items evenly */
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2.4em;
+            margin: 0;
+            font-weight: bold; /* Making the text bold */
+            letter-spacing: 0.1em; /* Increased letter spacing */
+        }
+
+        .nav-button {
+            padding: 6px 18px;
+            font-size: 16px;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            border: 2px solid #fff; /* Added white border */
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-button:hover {
+            background-color: #fff; /* White background on hover */
+            color: #000; /* Black text on hover */
+            border-color: #000; /* Black border on hover */
+        }
+
+        .content, .loan-calculator {
             background-color: white;
-            padding: 60px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 700px; /* Further increased from 600px */
-            width: 90%; /* It will take 90% of body width, up to 700px */
-            margin: auto; /* Centers the content block horizontally */
+            max-width: 700px;
+            width: 90%;
+            margin: 20px 0;
         }
 
+        /* Existing styles continue below */
         h3 {
             color: #333;
-            margin: 20px 0;
-            font-size: 2em; /* Further increased font size */
-            font-weight: bold; /* Added bold for labels */
-        }
-
-        .prediction, .interest-rate {
-            color: #5cb85c;
+            margin: 10px 0;
+            font-size: 1.5em;
             font-weight: bold;
-            font-size: 2.5em; /* Further increased font size for prediction and interest rate */
+        }
+        
+        .prediction {
+            color: #5cb85c; /* Set the prediction value back to green */
+            font-weight: bold;
+            font-size: 2.5em;
         }
 
-        .interest-rate {
-            color: #f0ad4e;
+        .interest-rate, #monthlyPayments, #totalInterest, #totalAmountPaid {
+            color: #000; /* Ensuring other values are black */
+            font-weight: bold;
+            font-size: 2.5em; /* Keep the size for these figures */
         }
 
         .label {
-            display: block; /* Makes the label go full width, better for separation */
-            font-size: 1.5em; /* Adjust font size for labels if needed */
+            display: block;
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
         }
-        .button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .loan-details span, .loan-details h3 {
             font-size: 1em;
-            margin-top: 20px;
-        }
-
-        .button:hover {
-            background-color: #45a049;
-        }
-        
-        /* Add these styles to your existing <style> tag in the head */
-
-        .loan-calculator {
-            margin-top: 40px; /* Separation from the prediction content */
-        }
-
-        .calculator-form, .loan-details {
-            margin-top: 20px;
-        }
-
-        .calculator-form input {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: calc(100% - 22px); /* Full width minus padding and border */
-        }
-
-        .loan-details {
-            text-align: left;
-            margin-top: 20px;
+            color: #666;
         }
 
         .loan-details h3 {
-            color: #333;
-            font-weight: normal;
+            font-size: 1.25em;
+            margin: 5px 0;
         }
-
-        /* You can further style the layout, colors, and fonts as needed */
     </style>
-
 </head>
 <body>
+    <div class="header">
+        <a class="nav-button" href="/">Back to Home</a>
+        <h1>Prediction</h1>
+        <div style="width: 140px;"> <!-- Spacer to align items --></div>
+    </div>
     <div class="content">
         <span class="label">Prediction:</span>
         <h3 class="prediction">{{ pred }}</h3>
         <span class="label">Predicted Interest Rate:</span>
         <h3 class="interest-rate">{{ int_rate }}</h3>
-        <button class="button" onclick="window.location.href='/'">Back to Home</button>
     </div>
     <div class="loan-calculator">
-        <span class="label">Loan Calculator</span>
-        <div class="calculator-form">
-            <input type="number" id="loanAmount" placeholder="Loan amount">
-            <input type="number" id="loanTermYears" placeholder="Loan term in years">
-            <input type="number" id="loanTermMonths" placeholder="Or loan term in months">
-            <input type="number" id="annualInterestRate" placeholder="Interest rate per year">
-            <button class="button" onclick="calculateLoan()">Calculate</button>
-        </div>
+        <span class="label">Loan Calculator Results</span>
         <div class="loan-details">
             <span>Monthly payments:</span>
             <h3 id="monthlyPayments">$0.00</h3>
-            <span>Total principal paid:</span>
-            <h3 id="totalPrincipal">$0.00</h3>
             <span>Total interest paid:</span>
             <h3 id="totalInterest">$0.00</h3>
+            <span>Total amount paid:</span>
+            <h3 id="totalAmountPaid">$0.00</h3>
         </div>
     </div>
+
+    
     
     <script>
-    // JavaScript function to calculate loan details
-    function calculateLoan() {
-        // Get the values from the input fields
-        var loanAmount = parseFloat(document.getElementById('loanAmount').value);
-        var loanTermYears = parseFloat(document.getElementById('loanTermYears').value);
-        var loanTermMonths = parseFloat(document.getElementById('loanTermMonths').value);
-        var annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+    // Parse the variables passed from Flask as floats
+    var loanAmount = parseFloat("{{ amount }}");
+    var loanTermMonths = parseFloat("{{ term }}");
+    var annualInterestRate = parseFloat("{{ int_rate }}");
+    var loanPurpose = "{{ purpose }}"; // New variable for the purpose of the loan
     
-        // Convert input to correct terms if necessary
-        var totalPayments = loanTermYears ? loanTermYears * 12 : loanTermMonths;
     
-        // Calculate monthly payment
-        var monthlyInterestRate = (annualInterestRate / 100) / 12;
-        var monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
     
-        // Output the results to the loan-details section
-        document.getElementById('monthlyPayments').textContent = monthlyPayment.toFixed(2);
-        document.getElementById('totalPrincipal').textContent = loanAmount.toFixed(2);
-        var totalInterest = monthlyPayment * totalPayments - loanAmount;
-        document.getElementById('totalInterest').textContent = totalInterest.toFixed(2);
+    window.onload = function() {
+        calculateLoan(loanAmount, loanTermMonths, annualInterestRate, loanPurpose);
     }
     
-    // Optional: Add here any additional JavaScript you may need for the page
+    function calculateLoan(loanAmount, loanTermMonths, annualInterestRate, loanPurpose) {
+        var monthlyInterestRate = annualInterestRate / 100 / 12;
+        var monthlyPayment = loanAmount * monthlyInterestRate /
+            (1 - Math.pow(1 + monthlyInterestRate, -loanTermMonths));
+        var totalInterest = monthlyPayment * loanTermMonths - loanAmount;
+        var totalAmountPaid = loanAmount + totalInterest;
+
+        // Display the results with formatted currency
+        document.getElementById('monthlyPayments').textContent = formatCurrency(monthlyPayment);
+        document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+        document.getElementById('totalAmountPaid').textContent = formatCurrency(totalAmountPaid);
+
+        // Call the color-coding function with the loan purpose
+        colorCodeInterest(annualInterestRate, loanPurpose);
+    }
+
+    function formatCurrency(number) {
+        return `$${number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+    }
+
     
+    // Function to color-code the interest rate based on purpose and thresholds
+    function colorCodeInterest(interestRate, purpose) {
+        var element = document.querySelector('.interest-rate');
+        
+        
+        var color = 'red'; // Default to bad unless it meets criteria for good or average
+    
+        // Define thresholds based on the purpose of the loan using Q1 and Q3 values
+        var thresholds = {
+            'all_other': { q1: 9.32, q3: 13.55 },
+            'credit_card': { q1: 10.08, q3: 13.57 },
+            'debt_consolidation': { q1: 11.14, q3: 14.26 },
+            'educational': { q1: 9.76, q3: 13.57 },
+            'home_improvement': { q1: 9.45, q3: 13.48 },
+            'major_purchase': { q1: 8.94, q3: 13.48 },
+            'small_business': { q1: 11.46, q3: 16.00 }
+        };
+    
+        if (thresholds[purpose]) {
+            var purposeThresholds = thresholds[purpose];
+            if (interestRate <= purposeThresholds.q1) {
+                color = '#5cb85c'; // Good
+            } else if (interestRate > purposeThresholds.q1 && interestRate <= purposeThresholds.q3) {
+                color = 'orange'; // Average
+            } // else, it remains red, which is bad
+        }
+        
+        element.style.color = color;
+    }
     </script>
-    
 </body>
 </html>

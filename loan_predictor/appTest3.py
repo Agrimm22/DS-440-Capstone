@@ -119,7 +119,7 @@ def results():
         int_rate = "{:.2f}%".format(int_rate)
 
         if pred_str == 'Yes':
-            return render_template('prediction_y_new.html', pred = pred_str, int_rate=int_rate)
+            return render_template('prediction_y_new.html', pred = pred_str, int_rate=int_rate, amount = amnt, term = loan_term, purpose = model_purpose)
         else:
             return render_template('prediction_n_new.html', pred = pred_str, url=img_url)
         

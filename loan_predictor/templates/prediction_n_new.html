@@ -2,106 +2,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction</title>
+    <title>Loan Predictor - Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             color: #333;
             background: #f4f4f4;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        
+
+        .header {
+            background: #000; /* Changed to black background */
+            color: #fff; /* Changed text color to white */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between; /* Space items evenly */
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2.4em;
+            margin: 0;
+            font-weight: bold; /* Making the text bold */
+            padding: 10px; /* Adding padding */
+            border-radius: 5px; /* Rounded corners */
+            letter-spacing: 0.1em; /* Increased letter spacing for "Loan Predictor" text */
+        }
+
+        .nav-button {
+            padding: 6px 18px; /* Slightly reduced to accommodate border */
+            font-size: 16px;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            border: 2px solid #fff; /* Added white border */
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Added transition for border color */
+            text-decoration: none;
+            font-weight: bold; /* Keeping the button text bold */
+        }
+
+        .nav-button:hover {
+            background-color: #fff; /* White background on hover */
+            color: #000; /* Black text on hover */
+            border-color: #000; /* Black border on hover */
+        }
+
+        .spacer { /* New spacer div for alignment */
+            width: 140px; /* Adjust width based on actual button size */
+        }
+
         .container {
             max-width: 960px;
-            margin: 20px auto;
-            padding: 15px;
+            margin: 30px auto;
+            padding: 20px;
             background: white;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .centered-text {
-            text-align: center;
-            margin: 0;
-        }
-
-        h3 {
-            font-size: 1.5em;
-            color: #333;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .prediction {
             text-align: center;
-            margin-bottom: 20px; /* Adjust as needed for spacing */
+            margin-bottom: -30px; /* Adjust this value to reduce the space */
         }
 
         .prediction-value {
-            color: red;
-            font-size: 2em; /* Makes the text larger */
-            font-weight: bold; /* Makes the text bold */
+            color: red; /* Changed color to red */
+            font-size: 2.5em;
+            font-weight: bold;
         }
 
         .footer {
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             margin-top: 20px;
             font-size: 0.8em;
             color: #aaa;
+            border-top: 1px solid #eaeaea;
         }
 
-        .button-container {
-            text-align: center;
-            margin: 20px 0; /* Adjust as needed for spacing */
+        img {
+            display: block;
+            max-width: 90%;
+            height: auto;
+            margin-top: 0px; /* Add this line to reduce space from the top of the image */
+            margin: 20px auto;
         }
-
-        .button {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 9px #999;
-            transition: all 0.3s;
-        }
-
-        .button:hover {
-            background-color: #3e8e41;
-            box-shadow: 0 6px #666;
-        }
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 3px #666;
-            transform: translateY(4px);
-        }
-
 
     </style>
 </head>
 <body>
+    <div class="header">
+        <a class="nav-button" href="/">Back to Home</a>
+        <h1>Loan Predictor</h1>
+        <div class="spacer"></div> <!-- This div acts as a spacer on the right -->
+    </div>
     <div class="container">
         <div class="prediction">
-            <h3>Prediction:</h3>
+            <h3>Prediction Result:</h3>
             <div class="prediction-value">No</div>
-        </div>
-        <div class="button-container">
-            <button class="button" onclick="window.location.href='/'">Back to Home</button>
         </div>
         <!-- Display the graph image -->
         <img src="{{ url }}" alt="Graph" style="max-width:100%;height:auto;">
-        
-        
+        <div class="footer">
+                      
+        </div>
     </div>
 </body>
 </html>
